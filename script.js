@@ -1350,6 +1350,18 @@ createShootingStar();
 createHintIcon(); // Gọi hàm tạo icon
 createHintText();
 
+// Play bg-music on first click anywhere
+let bgMusicPlayed = false;
+renderer.domElement.addEventListener("click", function playBgMusicOnce() {
+  if (!bgMusicPlayed) {
+    const bgMusic = document.getElementById("bg-music");
+    if (bgMusic) {
+      bgMusic.play().catch(() => {});
+    }
+    bgMusicPlayed = true;
+  }
+});
+
 window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();

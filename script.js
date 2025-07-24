@@ -1319,6 +1319,29 @@ function createHintText() {
   hintText = new THREE.Mesh(planeGeometry, textMaterial);
   hintText.position.set(0, 15, 0);
   scene.add(hintText);
+
+  // Tambahkan event listener untuk klik pada hintText
+  // Deteksi klik pada objek 3D hintText
+  renderer.domElement.addEventListener(
+    "click",
+    function onHintTextClick(event) {
+      // Hitung mouse position dalam normalized device coordinates
+      const rect = renderer.domElement.getBoundingClientRect();
+      const mouse = {
+        x: ((event.clientX - rect.left) / rect.width) * 2 - 1,
+        y: -((event.clientY - rect.top) / rect.height) * 2 + 1,
+      };
+      const raycaster = new THREE.Raycaster();
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObject(hintText);
+      if (intersects.length > 0) {
+        const bgMusic = document.getElementById("bg-music");
+        if (bgMusic) {
+          bgMusic.play().catch(() => {});
+        }
+      }
+    }
+  );
 }
 
 // ---- CÁC HÀM XỬ LÝ SỰ KIỆN VÀ KHỞI ĐỘNG ----

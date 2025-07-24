@@ -729,7 +729,7 @@ scene.add(planet);
 
 // ---- TẠO CÁC VÒNG CHỮ QUAY QUANH HÀNH TINH ----
 const ringTexts = [
-  "The Planet is Brightest When It's Made in Azka face",
+  "The Planet is Brightest When It's Made in Azka's face",
   "Salsabila Azka Ramadhani",
   "See you on our 3rd date",
   "For My Steviaaa",
